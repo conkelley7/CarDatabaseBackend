@@ -1,9 +1,12 @@
 package com.kelley.cardatabase.domain.model;
 
 import jakarta.persistence.Entity;
+import jakarta.persistence.FetchType;
 import jakarta.persistence.GeneratedValue;
 import jakarta.persistence.GenerationType;
 import jakarta.persistence.Id;
+import jakarta.persistence.JoinColumn;
+import jakarta.persistence.ManyToOne;
 
 @Entity
 public class Car {
@@ -23,17 +26,22 @@ public class Car {
 	
 	private int price;
 	
+	@ManyToOne(fetch=FetchType.LAZY)
+	@JoinColumn(name="owner")
+	private Owner owner;
+	
 	// Constructors - Includes Default constructor for JPA/Hibernate
 	public Car() {
 	}
 	
-	public Car(String brand, String model, String color, String registrationNumber, int modelYear, int price) {
-		this.setBrand(brand);
-		this.setModel(model);
-		this.setColor(color);
-		this.setRegistrationNumber(registrationNumber);
-		this.setModelYear(modelYear);
-		this.setPrice(price);
+	public Car(String brand, String model, String color, String registrationNumber, int modelYear, int price, Owner owner) {
+		this.brand = brand;
+		this.model = model;
+		this.color = color;
+		this.registrationNumber = registrationNumber;
+		this.modelYear = modelYear;
+		this.price = price;
+		this.owner = owner;
 	}
 	
 	// Only getter for Id - Primary key and do NOT want to change at any poiny.
