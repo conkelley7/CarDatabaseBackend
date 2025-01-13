@@ -1,5 +1,7 @@
 package com.kelley.cardatabase.domain.model;
 
+import com.fasterxml.jackson.annotation.JsonManagedReference;
+
 import jakarta.persistence.Entity;
 import jakarta.persistence.FetchType;
 import jakarta.persistence.GeneratedValue;
@@ -28,6 +30,7 @@ public class Car {
 	
 	@ManyToOne(fetch=FetchType.LAZY)
 	@JoinColumn(name="owner")
+	@JsonManagedReference
 	private Owner owner;
 	
 	// Constructors - Includes Default constructor for JPA/Hibernate
