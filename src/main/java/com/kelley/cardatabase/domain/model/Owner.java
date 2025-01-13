@@ -2,6 +2,9 @@ package com.kelley.cardatabase.domain.model;
 
 import java.util.List;
 
+import com.fasterxml.jackson.annotation.JsonBackReference;
+import com.fasterxml.jackson.annotation.JsonIgnoreProperties;
+
 import jakarta.persistence.CascadeType;
 import jakarta.persistence.Entity;
 import jakarta.persistence.GeneratedValue;
@@ -10,6 +13,7 @@ import jakarta.persistence.Id;
 import jakarta.persistence.OneToMany;
 
 @Entity
+@JsonIgnoreProperties({"hibernateLazyInitializer", "handler"})
 public class Owner {
 	@Id
 	@GeneratedValue(strategy = GenerationType.AUTO)
@@ -19,6 +23,7 @@ public class Owner {
 	private String lastName;
 	
 	@OneToMany(cascade=CascadeType.ALL, mappedBy="owner")
+	@JsonBackReference
 	private List<Car> cars;
 	
 	public Owner() {
