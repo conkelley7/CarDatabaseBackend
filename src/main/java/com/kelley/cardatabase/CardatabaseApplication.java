@@ -15,7 +15,7 @@ import org.slf4j.Logger;
 import org.slf4j.LoggerFactory;
 
 /**
- * Implementing CommandLineRunner to add demo data to H2 database upon application startup.
+ * Implementing CommandLineRunner to add demo data to MariaDB database upon application startup.
  */
 @SpringBootApplication
 public class CardatabaseApplication implements CommandLineRunner {
@@ -36,11 +36,11 @@ public class CardatabaseApplication implements CommandLineRunner {
 	}
 	
 	/*
-	 * Overriding run method and adding demonstration data to H2 database.
+	 * Overriding run method and adding demonstration data to MariaDB database.
 	 */
 	@Override
 	public void run(String... args) throws Exception{
-		// Add owners to H2 database
+		// Add owners to database
 		Owner owner1 = new Owner("John", "Doe");
 		Owner owner2 = new Owner("Jane", "Doe");
 		
