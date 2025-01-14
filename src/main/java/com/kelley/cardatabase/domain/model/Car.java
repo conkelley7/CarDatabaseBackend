@@ -1,6 +1,8 @@
 package com.kelley.cardatabase.domain.model;
 
+import com.fasterxml.jackson.annotation.JsonIgnore;
 import com.fasterxml.jackson.annotation.JsonManagedReference;
+import com.fasterxml.jackson.annotation.JsonProperty;
 
 import jakarta.persistence.Entity;
 import jakarta.persistence.FetchType;
@@ -31,6 +33,8 @@ public class Car {
 	@ManyToOne(fetch=FetchType.LAZY)
 	@JoinColumn(name="owner")
 	@JsonManagedReference
+	@JsonIgnore // Ignore during POST requests - allow NULL owners (add owners later through PUT request)
+	@JsonProperty // Include during GET requests
 	private Owner owner;
 	
 	// Constructors - Includes Default constructor for JPA/Hibernate
