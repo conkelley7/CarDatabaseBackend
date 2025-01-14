@@ -34,9 +34,7 @@ public class Owner {
 		this.lastName = lastName;
 	}
 	
-	/*
-	 * Only a get() method for Id (primary key). Do not want a set() method.
-	 */
+	// Only Getter for ID. Hibernate will access field directly due to @Id annotation on field.
 	public Long getId() {
 		return id;
 	}

@@ -51,7 +51,7 @@ public class Car {
 		this.owner = owner;
 	}
 	
-	// Only getter for Id - Primary key and do NOT want to change at any poiny.
+	// Only Getter for ID. Hibernate will access field directly due to @Id annotation on field.
 	public Long getId() {
 		return id;
 	}
