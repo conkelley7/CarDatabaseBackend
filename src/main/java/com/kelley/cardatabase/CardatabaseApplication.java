@@ -4,8 +4,10 @@ import org.springframework.boot.CommandLineRunner;
 import org.springframework.boot.SpringApplication;
 import org.springframework.boot.autoconfigure.SpringBootApplication;
 
+import com.kelley.cardatabase.domain.model.AppUser;
 import com.kelley.cardatabase.domain.model.Car;
 import com.kelley.cardatabase.domain.model.Owner;
+import com.kelley.cardatabase.domain.repository.AppUserRepository;
 import com.kelley.cardatabase.domain.repository.CarRepository;
 import com.kelley.cardatabase.domain.repository.OwnerRepository;
 
@@ -24,10 +26,12 @@ public class CardatabaseApplication implements CommandLineRunner {
 	
 	private final CarRepository carRepository;
 	private final OwnerRepository ownerRepository;
+	private final AppUserRepository appUserRepository;
 	
-	public CardatabaseApplication(CarRepository carRepository, OwnerRepository ownerRepository) {
+	public CardatabaseApplication(CarRepository carRepository, OwnerRepository ownerRepository, AppUserRepository appUserRepository) {
 		this.carRepository = carRepository;
 		this.ownerRepository = ownerRepository;
+		this.appUserRepository = appUserRepository;
 	}
 	
 	public static void main(String[] args) {
@@ -50,6 +54,8 @@ public class CardatabaseApplication implements CommandLineRunner {
 		carRepository.save(new Car("Ford", "Mustang", "Red", "ADF-1121", 2023, 59000, owner1));
 		carRepository.save(new Car("Nissan", "Leaf", "White", "SSJ-3002", 2020, 29000, owner2));
 		carRepository.save(new Car("Jeep", "Patriot", "Navy", "CPK-5561", 2016, 4200, owner2));
+		
+		appUserRepository.save(new AppUser("admin", "$2a$10$8cjz47bjbR4Mn8GMg9IZx.vyjhLXR/SKKMSZ9.mP9vpMu0ssKi8GW", "ADMIN"));
 		
 		// Fetching all cars just added and logging them in console
 		for (Car car : carRepository.findAll()) {
