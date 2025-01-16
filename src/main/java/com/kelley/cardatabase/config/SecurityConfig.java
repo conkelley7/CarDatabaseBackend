@@ -13,14 +13,11 @@ import org.springframework.security.provisioning.InMemoryUserDetailsManager;
 @EnableWebSecurity
 public class SecurityConfig {
 	/*
-	 * Creates in-memory user. Used for Development.
+	 * Creating a simple in-memory User for Development phase.
 	 */
 	@Bean
 	public InMemoryUserDetailsManager userDetailsService() {
-		UserDetails user = User.builder().username("user").
-				password(passwordEncoder().encode("password"))
-				.roles("USER").build();
-		
+		UserDetails user = User.builder().username("user").password(passwordEncoder().encode("password")).roles("USER").build();
 		return new InMemoryUserDetailsManager(user);
 	}
 	
