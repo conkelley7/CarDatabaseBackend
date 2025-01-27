@@ -37,7 +37,7 @@ public class Car {
 	@JsonProperty // Include during GET requests
 	private Owner owner;
 	
-	// Constructors - Includes Default constructor for JPA/Hibernate
+	// Default constructor for JPA/Hibernate
 	public Car() {
 	}
 	
@@ -51,7 +51,6 @@ public class Car {
 		this.owner = owner;
 	}
 	
-	// Only Getter for ID. Hibernate will access field directly due to @Id annotation on field.
 	public Long getId() {
 		return id;
 	}
