@@ -12,7 +12,7 @@ import static org.springframework.test.web.servlet.result.MockMvcResultMatchers.
 
 @SpringBootTest
 @AutoConfigureMockMvc
-public class CarRestTest {
+public class AuthenticationSecurityTest {
 	@Autowired
 	private MockMvc mockMvc;
 	
