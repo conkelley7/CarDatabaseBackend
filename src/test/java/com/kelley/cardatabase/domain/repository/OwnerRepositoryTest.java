@@ -16,7 +16,19 @@ public class OwnerRepositoryTest {
 	@Test
 	void saveOwner() {
 		ownerRepository.save(new Owner("Lucy", "Smith"));
-		assertThat(ownerRepository.findByFirstName("Lucy").isPresent()).isTrue();
+		
+		boolean ownerFound = false;
+		
+		Iterable<Owner> owners = ownerRepository.findByFirstName("Lucy");
+		
+		for (Owner owner : owners) {
+			if ("Lucy".equals(owner.getFirstName()) && "Smith".equals(owner.getLastName())){
+				ownerFound = true;
+				break;
+			}
+		}
+		
+		assertThat(ownerFound).isTrue();
 	}
 	
 	@Test
