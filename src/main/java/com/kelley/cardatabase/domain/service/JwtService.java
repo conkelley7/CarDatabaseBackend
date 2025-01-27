@@ -11,12 +11,6 @@ import io.jsonwebtoken.SignatureAlgorithm;
 import io.jsonwebtoken.security.Keys;
 import jakarta.servlet.http.HttpServletRequest;
 
-/**
- * Just as a note for myself for the future:
- * It would be better to make a JwtService interface and implement it here as JwtServiceImpl.
- * By separating the interface and implementation, I can allow the service to focus solely on what needs to be done (e.g., generate a JWT, validate a JWT) 
- * without tying the business logic to a specific implementation. This is key to achieving abstraction.
- */
 @Service
 public class JwtService {
 	// 1 day in MS. Should be shortened in production.
